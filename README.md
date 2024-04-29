@@ -18,7 +18,7 @@ checksums.
 ### From source
 
 ```sh
-go install github.com/sorairolake/gb3sum@latest
+go install github.com/sorairolake/gb3sum/cmd/gb3sum@latest
 ```
 
 ### Via a package manager
@@ -66,7 +66,7 @@ foo.txt: OK
 
 ### Generate shell completion
 
-`completion` command generates shell completions to stdout.
+`--generate-completion` option generates shell completions to stdout.
 
 The following shells are supported:
 
@@ -78,7 +78,7 @@ The following shells are supported:
 Example:
 
 ```sh
-gb3sum completion bash > gb3sum.bash
+gb3sum --generate-completion bash > gb3sum.bash
 ```
 
 ## Command-line options
