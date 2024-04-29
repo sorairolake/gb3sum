@@ -1,0 +1,152 @@
+// SPDX-FileCopyrightText: 2024 Shun Sakai
+//
+// SPDX-License-Identifier: CC-BY-4.0
+
+= gb3sum(1)
+// Specify in UTC.
+:docdate: 2024-04-29
+:doctype: manpage
+:mansource: gb3sum 0.1.0
+:manmanual: General Commands Manual
+
+== NAME
+
+gb3sum - print and check BLAKE3 checksums
+
+== SYNOPSIS
+
+*{manname}* [_OPTION_]... [_FILE_]...
+
+== DESCRIPTION
+
+*{manname}* is a command-line utility for printing and checking BLAKE3
+checksums.
+
+When no _FILE_, or when _FILE_ is "-", read standard input.
+
+== POSITIONAL ARGUMENTS
+
+_FILE_::
+
+  Files to hash, or checksum files to check. When no _FILE_, or when _FILE_ is
+  "-", read standard input.
+
+== OPTIONS
+
+*-c*, *--check*::
+
+  Read checksums from _FILE_ and check them.
+
+*-l*, *--length* _BYTE_::
+
+  The number of output bytes. Default is 32.
+
+*--tag*::
+
+  Print BSD-style output.
+
+*--ignore-missing*::
+
+  Ignore missing files when checking checksums. This option requires *--check*.
+
+*-q*, *--quiet*::
+
+  Skip printing OK for each successfully verified file. This option requires
+  *--check*.
+
+*--status*::
+
+  Indicates the validation result with the exit status without printing
+  anything. This option requires *--check*.
+
+*--strict*::
+
+  Exit non-zero if any line in the file is invalid. This option requires
+  *--check*.
+
+*-w*, *--warn*::
+
+  Warn about improperly formatted checksum lines. This option requires
+  *--check*.
+
+*-h*, *--help*::
+
+  Print help message.
+
+*-v*, *--version*::
+
+  Print version number.
+
+*--generate-completion* _SHELL_::
+
+  Generate shell completion. The completion is output to stdout.
+
+  The possible values are:{blank}:::
+
+    *bash*::::
+
+      Bash.
+
+    *fish*::::
+
+      fish.
+
+    *powershell*::::
+
+      PowerShell.
+
+    *zsh*::::
+
+      Zsh.
+
+== EXIT STATUS
+
+*0*::
+
+  Successful program execution.
+
+*1*::
+
+  An error occurred.
+
+== NOTES
+
+Source repository:{blank}::
+
+  https://github.com/sorairolake/gb3sum
+
+BLAKE3:{blank}::
+
+  https://github.com/BLAKE3-team/BLAKE3
+
+== EXAMPLES
+
+Print BLAKE3 checksums:{blank}::
+
+  $ *gb3sum foo.txt | tee b3sums.txt*
+
+Check BLAKE3 checksums:{blank}::
+
+  $ *gb3sum -c b3sums.txt*
+
+== REPORTING BUGS
+
+Report bugs to:{blank}::
+
+  https://github.com/sorairolake/gb3sum/issues
+
+== COPYRIGHT
+
+Copyright (C) 2024 Shun Sakai
+
+. This program is distributed under the terms of the GNU General Public License
+  v3.0 or later.
+. This manual page is distributed under the terms of the Creative Commons
+  Attribution 4.0 International Public License.
+
+This is free software: you are free to change and redistribute it. There is NO
+WARRANTY, to the extent permitted by law.
+
+== SEE ALSO
+
+*b2sum*(1), *md5sum*(1)

@@ -1,0 +1,28 @@
+// SPDX-FileCopyrightText: 2024 Shun Sakai
+//
+// SPDX-License-Identifier: GPL-3.0-or-later
+
+= How to Build
+
+== Prerequisites
+
+.To build *gb3sum*, you will need the following dependencies
+* https://go.dev/[Go] (v1.22 or later)
+
+.To build man pages, you will need the following additional dependencies
+* https://asciidoctor.org/[Asciidoctor]
+
+== Building from source
+
+.To clone the repository
+[source,sh]
+----
+git clone https://github.com/sorairolake/gb3sum.git
+cd gb3sum
+----
+
+.To build a package
+[source,sh]
+----
+just build
+----
