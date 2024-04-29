@@ -19,7 +19,7 @@ gb3sum - print and check BLAKE3 checksums
 
 == DESCRIPTION
 
-*{manname}* is a simple command-line utility for printing and checking BLAKE3
+*{manname}* is a command-line utility for printing and checking BLAKE3
 checksums.
 
 When no _FILE_, or when _FILE_ is "-", read standard input.

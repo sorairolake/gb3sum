@@ -1,0 +1,46 @@
+# SPDX-FileCopyrightText: 2024 Shun Sakai
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+version: 1
+
+before:
+  hooks:
+    - go mod tidy
+    - asciidoctor -b manpage docs/man/man1/gb3sum.1.adoc
+
+builds:
+  - main: ./cmd/gb3sum
+    ldflags:
+      - -s -w
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+
+archives:
+  - format: tar.gz
+    # use zip for windows archives
+    format_overrides:
+      - goos: windows
+        format: zip
+    files:
+      - AUTHORS.adoc
+      - BUILD.adoc
+      - CHANGELOG.adoc
+      - CONTRIBUTING.adoc
+      - docs/man/man1/gb3sum.1
+      - LICENSES/*
+      - README.md
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
