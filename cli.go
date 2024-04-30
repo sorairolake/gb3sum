@@ -15,6 +15,13 @@ import (
 var rootCmd = &cobra.Command{
 	Use:   "gb3sum [OPTIONS] [FILE]...",
 	Short: "Print and check BLAKE3 checksums",
+	Long: `gb3sum prints and checks BLAKE3 checksums.
+
+When no [FILE], or when [FILE] is "-", read standard input.
+
+gb3sum supports a command-line syntax similar but not identical to md5sum(1).
+
+See gb3sum(1) for more details.`,
 	Example: `  # Print BLAKE3 checksums
   $ gb3sum foo.txt | tee b3sums.txt
 

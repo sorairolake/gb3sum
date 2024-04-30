@@ -4,7 +4,7 @@
 
 = gb3sum(1)
 // Specify in UTC.
-:docdate: 2024-04-29
+:docdate: 2024-04-30
 :doctype: manpage
 :mansource: gb3sum 0.1.0
 :manmanual: General Commands Manual
@@ -23,6 +23,21 @@ gb3sum - print and check BLAKE3 checksums
 checksums.
 
 When no _FILE_, or when _FILE_ is "-", read standard input.
+
+*{manname}* supports a command-line syntax similar but not identical to
+*md5sum*(1).
+
+Differences are:{blank}::
+
+  * *{manname}* doesn't have options to specify the input mode (*-b* and *-t*).
+  * *{manname}* always treats files as binary file.
+  * *{manname}* doesn't have an option to terminate output lines with NUL
+    (*-z*).
+  * *{manname}* has an option to specify the number of output bytes like
+    *b2sum*(1) (*-l*).
+
+Unlike *b3sum*(1), *{manname}* doesn't support keyed hashing and key
+derivation. Use *b3sum*(1) instead of *{manname}* for those purposes.
 
 == POSITIONAL ARGUMENTS
 
