@@ -99,4 +99,6 @@ func init() {
 	rootCmd.Flags().StringVar(&opt.generateCompletion, "generate-completion", "", "generate shell completion")
 
 	rootCmd.MarkFlagsMutuallyExclusive("quiet", "status")
+
+	rootCmd.Flags().SortFlags = false
 }
