@@ -13,8 +13,13 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use:     "gb3sum [OPTIONS] [FILE]...",
-	Short:   "Print and check BLAKE3 checksums",
+	Use:   "gb3sum [OPTIONS] [FILE]...",
+	Short: "Print and check BLAKE3 checksums",
+	Example: `  # Print BLAKE3 checksums
+  $ gb3sum foo.txt | tee b3sums.txt
+
+  # Check BLAKE3 checksums
+  $ gb3sum -c b3sums.txt`,
 	Version: version,
 	PreRunE: func(cmd *cobra.Command, _ []string) error {
 		if ignoreMissing, _ := cmd.Flags().GetBool("ignore-missing"); ignoreMissing {
