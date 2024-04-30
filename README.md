@@ -18,7 +18,7 @@ checksums.
 ### From source
 
 ```sh
-go install github.com/sorairolake/gb3sum/cmd/gb3sum@latest
+go install github.com/sorairolake/gb3sum@latest
 ```
 
 ### Via a package manager

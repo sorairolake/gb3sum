@@ -10,8 +10,7 @@ before:
     - asciidoctor -b manpage docs/man/man1/gb3sum.1.adoc
 
 builds:
-  - main: ./cmd/gb3sum
-    ldflags:
+  - ldflags:
       - -s -w
     env:
       - CGO_ENABLED=0

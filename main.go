@@ -4,14 +4,10 @@
 
 package main
 
-import (
-	"os"
-
-	"github.com/sorairolake/gb3sum"
-)
+import "os"
 
 func main() {
-	if err := gb3sum.RootCmd.Execute(); err != nil {
+	if err := rootCmd.Execute(); err != nil {
 		os.Exit(1)
 	}
 }

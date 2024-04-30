@@ -2,7 +2,7 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-package gb3sum
+package main
 
 import (
 	"encoding/hex"

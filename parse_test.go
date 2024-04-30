@@ -2,20 +2,18 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-package gb3sum_test
+package main
 
 import (
 	"encoding/hex"
 	"slices"
 	"testing"
-
-	"github.com/sorairolake/gb3sum"
 )
 
 func TestUnescapeFilename(t *testing.T) {
 	t.Parallel()
 
-	filename, err := gb3sum.UnescapeFilename("README.md")
+	filename, err := unescapeFilename("README.md")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -28,7 +26,7 @@ func TestUnescapeFilename(t *testing.T) {
 func TestUnescapeFilenameEscaped(t *testing.T) {
 	t.Parallel()
 
-	filename, err := gb3sum.UnescapeFilename("CODE\\\\_OF\\n_CONDUCT\\r.md")
+	filename, err := unescapeFilename("CODE\\\\_OF\\n_CONDUCT\\r.md")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -43,7 +41,7 @@ func TestParseUntaggedChecksum(t *testing.T) {
 
 	line := "94f1675bac4f8bc3c593c63dbf5fe78a0bfda01082af85d5b41a65096db56bff  foo.txt"
 
-	checksum, err := gb3sum.ParseUntaggedChecksum(line)
+	checksum, err := parseUntaggedChecksum(line)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -53,16 +51,16 @@ func TestParseUntaggedChecksum(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if checksum.EscapedFilename() != "foo.txt" {
-		t.Errorf("expected escaped filename `%v`, got `%v`", "foo.txt", checksum.EscapedFilename())
+	if checksum.escapedFilename != "foo.txt" {
+		t.Errorf("expected escaped filename `%v`, got `%v`", "foo.txt", checksum.escapedFilename)
 	}
 
-	if checksum.UnescapedFilename() != "foo.txt" {
-		t.Errorf("expected unescaped filename `%v`, got `%v`", "foo.txt", checksum.UnescapedFilename())
+	if checksum.unescapedFilename != "foo.txt" {
+		t.Errorf("expected unescaped filename `%v`, got `%v`", "foo.txt", checksum.unescapedFilename)
 	}
 
-	if !slices.Equal(checksum.Digest(), expectedDigest) {
-		t.Errorf("expected digest `%v`, got `%v`", expectedDigest, checksum.Digest())
+	if !slices.Equal(checksum.digest, expectedDigest) {
+		t.Errorf("expected digest `%v`, got `%v`", expectedDigest, checksum.digest)
 	}
 }
 
@@ -71,7 +69,7 @@ func TestParseUntaggedChecksumEscaped(t *testing.T) {
 
 	line := "\\bee561c8ab07fec8ec114df9ffff1fce5e1e31846483e110fe6f05582bd816be  CODE\\\\_OF\\n_CONDUCT\\r.md"
 
-	checksum, err := gb3sum.ParseUntaggedChecksum(line)
+	checksum, err := parseUntaggedChecksum(line)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -81,16 +79,16 @@ func TestParseUntaggedChecksumEscaped(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if checksum.EscapedFilename() != "CODE\\\\_OF\\n_CONDUCT\\r.md" {
-		t.Errorf("expected escaped filename `%v`, got `%v`", "CODE\\\\_OF\\n_CONDUCT\\r.md", checksum.EscapedFilename())
+	if checksum.escapedFilename != "CODE\\\\_OF\\n_CONDUCT\\r.md" {
+		t.Errorf("expected escaped filename `%v`, got `%v`", "CODE\\\\_OF\\n_CONDUCT\\r.md", checksum.escapedFilename)
 	}
 
-	if checksum.UnescapedFilename() != "CODE\\_OF\n_CONDUCT\r.md" {
-		t.Errorf("expected unescaped filename `%v`, got `%v`", "CODE\\_OF\n_CONDUCT\r.md", checksum.UnescapedFilename())
+	if checksum.unescapedFilename != "CODE\\_OF\n_CONDUCT\r.md" {
+		t.Errorf("expected unescaped filename `%v`, got `%v`", "CODE\\_OF\n_CONDUCT\r.md", checksum.unescapedFilename)
 	}
 
-	if !slices.Equal(checksum.Digest(), expectedDigest) {
-		t.Errorf("expected digest `%v`, got `%v`", expectedDigest, checksum.Digest())
+	if !slices.Equal(checksum.digest, expectedDigest) {
+		t.Errorf("expected digest `%v`, got `%v`", expectedDigest, checksum.digest)
 	}
 }
 
@@ -99,7 +97,7 @@ func TestParseTaggedChecksum(t *testing.T) {
 
 	line := "BLAKE3 (foo.txt) = 94f1675bac4f8bc3c593c63dbf5fe78a0bfda01082af85d5b41a65096db56bff"
 
-	checksum, err := gb3sum.ParseTaggedChecksum(line)
+	checksum, err := parseTaggedChecksum(line)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -109,16 +107,16 @@ func TestParseTaggedChecksum(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if checksum.EscapedFilename() != "foo.txt" {
-		t.Errorf("expected escaped filename `%v`, got `%v`", "foo.txt", checksum.EscapedFilename())
+	if checksum.escapedFilename != "foo.txt" {
+		t.Errorf("expected escaped filename `%v`, got `%v`", "foo.txt", checksum.escapedFilename)
 	}
 
-	if checksum.UnescapedFilename() != "foo.txt" {
-		t.Errorf("expected unescaped filename `%v`, got `%v`", "foo.txt", checksum.UnescapedFilename())
+	if checksum.unescapedFilename != "foo.txt" {
+		t.Errorf("expected unescaped filename `%v`, got `%v`", "foo.txt", checksum.unescapedFilename)
 	}
 
-	if !slices.Equal(checksum.Digest(), expectedDigest) {
-		t.Errorf("expected digest `%v`, got `%v`", expectedDigest, checksum.Digest())
+	if !slices.Equal(checksum.digest, expectedDigest) {
+		t.Errorf("expected digest `%v`, got `%v`", expectedDigest, checksum.digest)
 	}
 }
 
@@ -127,7 +125,7 @@ func TestParseTaggedChecksumEscaped(t *testing.T) {
 
 	line := "\\BLAKE3 (CODE\\\\_OF\\n_CONDUCT\\r.md) = bee561c8ab07fec8ec114df9ffff1fce5e1e31846483e110fe6f05582bd816be"
 
-	checksum, err := gb3sum.ParseTaggedChecksum(line)
+	checksum, err := parseTaggedChecksum(line)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -137,15 +135,15 @@ func TestParseTaggedChecksumEscaped(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if checksum.EscapedFilename() != "CODE\\\\_OF\\n_CONDUCT\\r.md" {
-		t.Errorf("expected escaped filename `%v`, got `%v`", "CODE\\\\_OF\\n_CONDUCT\\r.md", checksum.EscapedFilename())
+	if checksum.escapedFilename != "CODE\\\\_OF\\n_CONDUCT\\r.md" {
+		t.Errorf("expected escaped filename `%v`, got `%v`", "CODE\\\\_OF\\n_CONDUCT\\r.md", checksum.escapedFilename)
 	}
 
-	if checksum.UnescapedFilename() != "CODE\\_OF\n_CONDUCT\r.md" {
-		t.Errorf("expected unescaped filename `%v`, got `%v`", "CODE\\_OF\n_CONDUCT\r.md", checksum.UnescapedFilename())
+	if checksum.unescapedFilename != "CODE\\_OF\n_CONDUCT\r.md" {
+		t.Errorf("expected unescaped filename `%v`, got `%v`", "CODE\\_OF\n_CONDUCT\r.md", checksum.unescapedFilename)
 	}
 
-	if !slices.Equal(checksum.Digest(), expectedDigest) {
-		t.Errorf("expected digest `%v`, got `%v`", expectedDigest, checksum.Digest())
+	if !slices.Equal(checksum.digest, expectedDigest) {
+		t.Errorf("expected digest `%v`, got `%v`", expectedDigest, checksum.digest)
 	}
 }
