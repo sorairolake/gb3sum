@@ -93,10 +93,10 @@ func run(cmd *cobra.Command, args []string) (bool, error) {
 						fmt.Fprintf(os.Stderr, "gb3sum: %v: %v: improperly formatted BLAKE3 checksum line\n", checksumFile, lineNumber)
 					}
 
-					lineNumber++
-
 					continue
 				}
+
+				lineNumber++
 
 				verifyInput, err := readFile(checksum.unescapedFilename)
 				if err != nil {
