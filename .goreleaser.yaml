@@ -10,13 +10,17 @@ before:
     - asciidoctor -b manpage docs/man/man1/gb3sum.1.adoc
 
 builds:
-  - ldflags:
+  - flags:
+      - -trimpath
+    ldflags:
       - -s -w
     env:
       - CGO_ENABLED=0
     goos:
-      - linux
       - darwin
+      - freebsd
+      - linux
+      - openbsd
       - windows
     goarch:
       - amd64

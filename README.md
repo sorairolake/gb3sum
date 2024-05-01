@@ -29,7 +29,8 @@ go install github.com/sorairolake/gb3sum@latest
 
 ### From binaries
 
-The [release page] contains pre-built binaries for Linux, macOS and Windows.
+The [release page] contains pre-built binaries for Linux, macOS, Windows and
+others.
 
 ### How to build
 
