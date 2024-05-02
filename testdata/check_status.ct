@@ -1,0 +1,7 @@
+# SPDX-FileCopyrightText: 2024 Shun Sakai
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+$ gb3sum -c --status b3sums_tagged.txt
+
+$ gb3sum -c --status b3sums_failed.txt --> FAIL

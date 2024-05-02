@@ -1,0 +1,67 @@
+# SPDX-FileCopyrightText: 2024 Shun Sakai
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+$ gb3sum -h
+gb3sum prints and checks BLAKE3 checksums.
+
+When no [FILE], or when [FILE] is "-", read standard input.
+
+gb3sum supports a command-line syntax similar but not identical to md5sum(1).
+
+See gb3sum(1) for more details.
+
+Usage:
+  gb3sum [OPTIONS] [FILE]...
+
+Examples:
+  # Print BLAKE3 checksums
+  $ gb3sum foo.txt | tee b3sums.txt
+
+  # Check BLAKE3 checksums
+  $ gb3sum -c b3sums.txt
+
+Flags:
+  -c, --check                        read checksums from [FILE] and check them
+  -l, --length uint                  the number of output bytes (default 32)
+      --tag                          print BSD-style output
+      --ignore-missing               ignore missing files when checking checksums
+  -q, --quiet                        skip printing OK for each successfully verified file
+      --status                       indicates the validation result with the exit status without printing anything
+      --strict                       exit non-zero if any line in the file is invalid
+  -w, --warn                         warn about improperly formatted checksum lines
+      --generate-completion string   generate shell completion
+  -h, --help                         help for gb3sum
+  -v, --version                      version for gb3sum
+
+$ gb3sum --help
+gb3sum prints and checks BLAKE3 checksums.
+
+When no [FILE], or when [FILE] is "-", read standard input.
+
+gb3sum supports a command-line syntax similar but not identical to md5sum(1).
+
+See gb3sum(1) for more details.
+
+Usage:
+  gb3sum [OPTIONS] [FILE]...
+
+Examples:
+  # Print BLAKE3 checksums
+  $ gb3sum foo.txt | tee b3sums.txt
+
+  # Check BLAKE3 checksums
+  $ gb3sum -c b3sums.txt
+
+Flags:
+  -c, --check                        read checksums from [FILE] and check them
+  -l, --length uint                  the number of output bytes (default 32)
+      --tag                          print BSD-style output
+      --ignore-missing               ignore missing files when checking checksums
+  -q, --quiet                        skip printing OK for each successfully verified file
+      --status                       indicates the validation result with the exit status without printing anything
+      --strict                       exit non-zero if any line in the file is invalid
+  -w, --warn                         warn about improperly formatted checksum lines
+      --generate-completion string   generate shell completion
+  -h, --help                         help for gb3sum
+  -v, --version                      version for gb3sum

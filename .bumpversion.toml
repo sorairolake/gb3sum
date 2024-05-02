@@ -9,4 +9,7 @@ current_version = "0.1.0"
 filename = "docs/man/man1/gb3sum.1.adoc"
 
 [[tool.bumpversion.files]]
+filename = "testdata/version.ct"
+
+[[tool.bumpversion.files]]
 filename = "version.go"

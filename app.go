@@ -76,10 +76,11 @@ func run(cmd *cobra.Command, args []string) (bool, error) {
 
 			reader := bytes.NewReader(input)
 			scanner := bufio.NewScanner(reader)
-			lineNumber := 1
+			lineNumber := 0
 
 			for scanner.Scan() {
 				line := scanner.Text()
+				lineNumber++
 
 				checksum, err := parseChecksum(line)
 				if err != nil {
@@ -95,8 +96,6 @@ func run(cmd *cobra.Command, args []string) (bool, error) {
 
 					continue
 				}
-
-				lineNumber++
 
 				verifyInput, err := readFile(checksum.unescapedFilename)
 				if err != nil {

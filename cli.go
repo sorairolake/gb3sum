@@ -12,6 +12,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
+const defaultOutLen = 32
+
 var rootCmd = &cobra.Command{
 	Use:   "gb3sum [OPTIONS] [FILE]...",
 	Short: "Print and check BLAKE3 checksums",
@@ -101,7 +103,7 @@ var opt options
 
 func init() {
 	rootCmd.Flags().BoolVarP(&opt.check, "check", "c", false, "read checksums from [FILE] and check them")
-	rootCmd.Flags().UintVarP(&opt.length, "length", "l", 32, "the number of output bytes")
+	rootCmd.Flags().UintVarP(&opt.length, "length", "l", defaultOutLen, "the number of output bytes")
 	rootCmd.Flags().BoolVar(&opt.tag, "tag", false, "print BSD-style output")
 	rootCmd.Flags().BoolVar(&opt.ignoreMissing, "ignore-missing", false, "ignore missing files when checking checksums")
 	rootCmd.Flags().BoolVarP(&opt.quiet, "quiet", "q", false, "skip printing OK for each successfully verified file")
