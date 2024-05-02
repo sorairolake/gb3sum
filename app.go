@@ -2,7 +2,7 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-package gb3sum
+package main
 
 import (
 	"bufio"
@@ -76,10 +76,11 @@ func run(cmd *cobra.Command, args []string) (bool, error) {
 
 			reader := bytes.NewReader(input)
 			scanner := bufio.NewScanner(reader)
-			lineNumber := 1
+			lineNumber := 0
 
 			for scanner.Scan() {
 				line := scanner.Text()
+				lineNumber++
 
 				checksum, err := parseChecksum(line)
 				if err != nil {
@@ -92,8 +93,6 @@ func run(cmd *cobra.Command, args []string) (bool, error) {
 					if opt.warn {
 						fmt.Fprintf(os.Stderr, "gb3sum: %v: %v: improperly formatted BLAKE3 checksum line\n", checksumFile, lineNumber)
 					}
-
-					lineNumber++
 
 					continue
 				}

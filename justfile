@@ -9,12 +9,12 @@ alias build := build-debug
 default: build-debug
 
 # Build `gb3sum` command in debug mode
-@build-debug:
+@build-debug $CGO_ENABLED="0":
     go build
 
 # Build `gb3sum` command in release mode
-@build-release:
-    go build -buildmode=pie -trimpath -ldflags=-s -mod=readonly -modcacherw
+@build-release $CGO_ENABLED="0":
+    go build -ldflags="-s -w" -trimpath
 
 # Remove generated artifacts
 @clean:

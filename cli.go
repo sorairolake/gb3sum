@@ -2,7 +2,7 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-package gb3sum
+package main
 
 import (
 	"fmt"
@@ -12,9 +12,23 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var RootCmd = &cobra.Command{
-	Use:     "gb3sum [OPTIONS] [FILE]...",
-	Short:   "Print and check BLAKE3 checksums",
+const defaultOutLen = 32
+
+var rootCmd = &cobra.Command{
+	Use:   "gb3sum [OPTIONS] [FILE]...",
+	Short: "Print and check BLAKE3 checksums",
+	Long: `gb3sum prints and checks BLAKE3 checksums.
+
+When no [FILE], or when [FILE] is "-", read standard input.
+
+gb3sum supports a command-line syntax similar but not identical to md5sum(1).
+
+See gb3sum(1) for more details.`,
+	Example: `  # Print BLAKE3 checksums
+  $ gb3sum foo.txt | tee b3sums.txt
+
+  # Check BLAKE3 checksums
+  $ gb3sum -c b3sums.txt`,
 	Version: version,
 	PreRunE: func(cmd *cobra.Command, _ []string) error {
 		if ignoreMissing, _ := cmd.Flags().GetBool("ignore-missing"); ignoreMissing {
@@ -88,15 +102,17 @@ type options struct {
 var opt options
 
 func init() {
-	RootCmd.Flags().BoolVarP(&opt.check, "check", "c", false, "read checksums from [FILE] and check them")
-	RootCmd.Flags().UintVarP(&opt.length, "length", "l", 32, "the number of output bytes")
-	RootCmd.Flags().BoolVar(&opt.tag, "tag", false, "print BSD-style output")
-	RootCmd.Flags().BoolVar(&opt.ignoreMissing, "ignore-missing", false, "ignore missing files when checking checksums")
-	RootCmd.Flags().BoolVarP(&opt.quiet, "quiet", "q", false, "skip printing OK for each successfully verified file")
-	RootCmd.Flags().BoolVar(&opt.status, "status", false, "indicates the validation result with the exit status without printing anything")
-	RootCmd.Flags().BoolVar(&opt.strict, "strict", false, "exit non-zero if any line in the file is invalid")
-	RootCmd.Flags().BoolVarP(&opt.warn, "warn", "w", false, "warn about improperly formatted checksum lines")
-	RootCmd.Flags().StringVar(&opt.generateCompletion, "generate-completion", "", "generate shell completion")
+	rootCmd.Flags().BoolVarP(&opt.check, "check", "c", false, "read checksums from [FILE] and check them")
+	rootCmd.Flags().UintVarP(&opt.length, "length", "l", defaultOutLen, "the number of output bytes")
+	rootCmd.Flags().BoolVar(&opt.tag, "tag", false, "print BSD-style output")
+	rootCmd.Flags().BoolVar(&opt.ignoreMissing, "ignore-missing", false, "ignore missing files when checking checksums")
+	rootCmd.Flags().BoolVarP(&opt.quiet, "quiet", "q", false, "skip printing OK for each successfully verified file")
+	rootCmd.Flags().BoolVar(&opt.status, "status", false, "indicates the validation result with the exit status without printing anything")
+	rootCmd.Flags().BoolVar(&opt.strict, "strict", false, "exit non-zero if any line in the file is invalid")
+	rootCmd.Flags().BoolVarP(&opt.warn, "warn", "w", false, "warn about improperly formatted checksum lines")
+	rootCmd.Flags().StringVar(&opt.generateCompletion, "generate-completion", "", "generate shell completion")
 
-	RootCmd.MarkFlagsMutuallyExclusive("quiet", "status")
+	rootCmd.MarkFlagsMutuallyExclusive("quiet", "status")
+
+	rootCmd.Flags().SortFlags = false
 }

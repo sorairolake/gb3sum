@@ -1,0 +1,47 @@
+# SPDX-FileCopyrightText: 2024 Shun Sakai
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+$ gb3sum -c b3sums_improperly_formatted.txt
+foo.txt: OK
+gb3sum: WARNING: 1 line is improperly formatted
+
+$ gb3sum -c --strict b3sums_improperly_formatted.txt --> FAIL
+foo.txt: OK
+gb3sum: WARNING: 1 line is improperly formatted
+
+$ gb3sum -c -w b3sums_improperly_formatted.txt
+foo.txt: OK
+gb3sum: b3sums_improperly_formatted.txt: 2: improperly formatted BLAKE3 checksum line
+gb3sum: WARNING: 1 line is improperly formatted
+
+$ gb3sum -c --warn b3sums_improperly_formatted.txt
+foo.txt: OK
+gb3sum: b3sums_improperly_formatted.txt: 2: improperly formatted BLAKE3 checksum line
+gb3sum: WARNING: 1 line is improperly formatted
+
+$ gb3sum -c --strict -w b3sums_improperly_formatted.txt --> FAIL
+foo.txt: OK
+gb3sum: b3sums_improperly_formatted.txt: 2: improperly formatted BLAKE3 checksum line
+gb3sum: WARNING: 1 line is improperly formatted
+
+$ gb3sum -c b3sums_multiple_improperly_formatted.txt
+gb3sum: WARNING: 2 lines are improperly formatted
+
+$ gb3sum -c --strict b3sums_multiple_improperly_formatted.txt --> FAIL
+gb3sum: WARNING: 2 lines are improperly formatted
+
+$ gb3sum -c -w b3sums_multiple_improperly_formatted.txt
+gb3sum: b3sums_multiple_improperly_formatted.txt: 1: improperly formatted BLAKE3 checksum line
+gb3sum: b3sums_multiple_improperly_formatted.txt: 2: improperly formatted BLAKE3 checksum line
+gb3sum: WARNING: 2 lines are improperly formatted
+
+$ gb3sum -c --warn b3sums_multiple_improperly_formatted.txt
+gb3sum: b3sums_multiple_improperly_formatted.txt: 1: improperly formatted BLAKE3 checksum line
+gb3sum: b3sums_multiple_improperly_formatted.txt: 2: improperly formatted BLAKE3 checksum line
+gb3sum: WARNING: 2 lines are improperly formatted
+
+$ gb3sum -c --strict -w b3sums_multiple_improperly_formatted.txt --> FAIL
+gb3sum: b3sums_multiple_improperly_formatted.txt: 1: improperly formatted BLAKE3 checksum line
+gb3sum: b3sums_multiple_improperly_formatted.txt: 2: improperly formatted BLAKE3 checksum line
+gb3sum: WARNING: 2 lines are improperly formatted

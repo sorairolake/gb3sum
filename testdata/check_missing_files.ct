@@ -1,0 +1,30 @@
+# SPDX-FileCopyrightText: 2024 Shun Sakai
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+$ gb3sum -c b3sums_missing_files.txt --> FAIL
+foo.txt: OK
+fox.txt: OK
+gb3sum: open non_existent.txt: no such file or directory
+gb3sum: WARNING: 1 listed file could not be read
+
+$ gb3sum -c --ignore-missing b3sums_missing_files.txt
+foo.txt: OK
+fox.txt: OK
+
+$ gb3sum -c b3sums_missing_multiple_files.txt --> FAIL
+gb3sum: open bar.txt: no such file or directory
+foo.txt: OK
+fox.txt: OK
+gb3sum: open non_existent.txt: no such file or directory
+gb3sum: WARNING: 2 listed files could not be read
+
+$ gb3sum -c --ignore-missing b3sums_missing_multiple_files.txt
+foo.txt: OK
+fox.txt: OK
+
+$ gb3sum -c --ignore-missing b3sums_multiple_failed.txt --> FAIL
+foo.txt: FAILED
+fox.txt: FAILED
+gb3sum: WARNING: 2 computed checksums did NOT match
+gb3sum: b3sums_multiple_failed.txt: no file was verified

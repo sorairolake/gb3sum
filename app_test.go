@@ -2,18 +2,14 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-package gb3sum_test
+package main
 
-import (
-	"testing"
-
-	"github.com/sorairolake/gb3sum"
-)
+import "testing"
 
 func TestEscapeFilename(t *testing.T) {
 	t.Parallel()
 
-	filename, escaped := gb3sum.EscapeFilename("README.md")
+	filename, escaped := escapeFilename("README.md")
 	if filename != "README.md" {
 		t.Errorf("expected filename `%v`, got `%v`", "README.md", filename)
 	}
@@ -26,7 +22,7 @@ func TestEscapeFilename(t *testing.T) {
 func TestEscapeFilenameEscaped(t *testing.T) {
 	t.Parallel()
 
-	filename, escaped := gb3sum.EscapeFilename("CODE\\_OF\n_CONDUCT\r.md")
+	filename, escaped := escapeFilename("CODE\\_OF\n_CONDUCT\r.md")
 	if filename != "CODE\\\\_OF\\n_CONDUCT\\r.md" {
 		t.Errorf("expected filename `%v`, got `%v`", "CODE\\\\_OF\\n_CONDUCT\\r.md", filename)
 	}

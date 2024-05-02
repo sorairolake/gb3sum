@@ -13,12 +13,15 @@ SPDX-License-Identifier: GPL-3.0-or-later
 **gb3sum** is a command-line utility for printing and checking [BLAKE3]
 checksums.
 
+gb3sum is written in [Go] and compiles into a single binary with no external
+dependencies.
+
 ## Installation
 
 ### From source
 
 ```sh
-go install github.com/sorairolake/gb3sum/cmd/gb3sum@latest
+go install github.com/sorairolake/gb3sum@latest
 ```
 
 ### Via a package manager
@@ -29,7 +32,8 @@ go install github.com/sorairolake/gb3sum/cmd/gb3sum@latest
 
 ### From binaries
 
-The [release page] contains pre-built binaries for Linux, macOS and Windows.
+The [release page] contains pre-built binaries for Linux, macOS, Windows and
+others.
 
 ### How to build
 
@@ -95,6 +99,24 @@ Please see [CHANGELOG.adoc].
 
 Please see [CONTRIBUTING.adoc].
 
+## Comparisons
+
+`gb3sum` supports a command-line syntax similar but not identical to
+coreutils's [`md5sum`].
+
+### Differences to coreutils's md5sum
+
+- `gb3sum` doesn't have options to specify the input mode (`-b` and `-t`).
+- `gb3sum` always treats files as binary file.
+- `gb3sum` doesn't have an option to terminate output lines with NUL (`-z`).
+- `gb3sum` has an option to specify the number of output bytes like coreutils's
+  [`b2sum`] (`-l`).
+
+### Differences to b3sum
+
+Unlike [`b3sum`], `gb3sum` doesn't support keyed hashing and key derivation.
+Use `b3sum` instead of `gb3sum` for those purposes.
+
 ## License
 
 Copyright &copy; 2024 Shun Sakai (see [AUTHORS.adoc])
@@ -114,11 +136,15 @@ licensing information.
 [reference-url]: https://pkg.go.dev/github.com/sorairolake/gb3sum
 [go-version-badge]: https://img.shields.io/github/go-mod/go-version/sorairolake/gb3sum?style=for-the-badge&logo=go
 [BLAKE3]: https://github.com/BLAKE3-team/BLAKE3
+[Go]: https://go.dev/
 [Homebrew]: https://brew.sh/
 [release page]: https://github.com/sorairolake/gb3sum/releases
 [BUILD.adoc]: BUILD.adoc
 [`gb3sum(1)`]: docs/man/man1/gb3sum.1.adoc
 [CHANGELOG.adoc]: CHANGELOG.adoc
 [CONTRIBUTING.adoc]: CONTRIBUTING.adoc
+[`md5sum`]: https://www.gnu.org/software/coreutils/md5sum
+[`b2sum`]: https://www.gnu.org/software/coreutils/b2sum
+[`b3sum`]: https://crates.io/crates/b3sum
 [AUTHORS.adoc]: AUTHORS.adoc
 [_REUSE Specification_]: https://reuse.software/spec/

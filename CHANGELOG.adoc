@@ -14,6 +14,18 @@ All notable changes to this project will be documented in this file.
 The format is based on https://keepachangelog.com/[Keep a Changelog], and this
 project adheres to https://semver.org/[Semantic Versioning].
 
+== {compare-url}/v0.1.0\...v0.2.0[0.2.0] - 2024-05-02
+
+=== Changed
+
+* Move the `main` package to the project root directory and remove the `gb3sum`
+  package ({pull-request-url}/4[#4])
+
+=== Fixed
+
+* Fix an issue where incorrect line numbers are printed when specifying
+  `--warn` ({pull-request-url}/10[#10])
+
 == {project-url}/releases/tag/v0.1.0[0.1.0] - 2024-04-29
 
 === Added

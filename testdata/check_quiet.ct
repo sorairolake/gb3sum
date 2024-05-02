@@ -1,0 +1,15 @@
+# SPDX-FileCopyrightText: 2024 Shun Sakai
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+$ gb3sum -c -q b3sums_tagged.txt
+
+$ gb3sum -c --quiet b3sums_tagged.txt
+
+$ gb3sum -c -q b3sums_failed.txt --> FAIL
+fox.txt: FAILED
+gb3sum: WARNING: 1 computed checksum did NOT match
+
+$ gb3sum -c --quiet b3sums_failed.txt --> FAIL
+fox.txt: FAILED
+gb3sum: WARNING: 1 computed checksum did NOT match
