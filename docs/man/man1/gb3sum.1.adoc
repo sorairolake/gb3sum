@@ -6,7 +6,7 @@
 // Specify in UTC.
 :docdate: 2024-04-30
 :doctype: manpage
-:mansource: gb3sum 0.1.0
+:mansource: gb3sum 0.2.0
 :manmanual: General Commands Manual
 
 == NAME
