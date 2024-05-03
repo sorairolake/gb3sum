@@ -22,7 +22,7 @@ func readFile(filename string) ([]byte, error) {
 	var reader io.Reader
 
 	switch filename {
-	case "", "-":
+	case "-":
 		reader = os.Stdin
 	default:
 		file, err := os.Open(filename)
@@ -60,6 +60,10 @@ func run(cmd *cobra.Command, args []string) (bool, error) {
 		}
 
 		return isSucceeded, nil
+	}
+
+	if len(args) == 0 {
+		args = append(args, "-")
 	}
 
 	if opt.check {
