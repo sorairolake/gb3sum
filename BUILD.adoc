@@ -9,7 +9,7 @@
 .To build *gb3sum*, you will need the following dependencies
 * https://go.dev/[Go] (v1.22 or later)
 
-.To build man pages, you will need the following additional dependencies
+.To build a man page, you will need the following additional dependencies
 * https://asciidoctor.org/[Asciidoctor]
 
 == Building from source
@@ -26,3 +26,11 @@ cd gb3sum
 ----
 just build
 ----
+
+.To build a man page
+[source,sh]
+----
+just build-man
+----
+
+The man page is generated in `docs/man/man1`.
