@@ -16,6 +16,10 @@ project adheres to https://semver.org/[Semantic Versioning].
 
 == {compare-url}/v0.2.0\...HEAD[Unreleased]
 
+=== Changed
+
+* Change to use `github.com/zeebo/blake3` ({pull-request-url}/18[#18])
+
 === Fixed
 
 * Fix to read from standard input when no positional arguments are specified
