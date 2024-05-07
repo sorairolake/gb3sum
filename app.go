@@ -15,14 +15,14 @@ import (
 	"strings"
 
 	"github.com/spf13/cobra"
-	"lukechampine.com/blake3"
+	"github.com/zeebo/blake3"
 )
 
 func readFile(filename string) ([]byte, error) {
 	var reader io.Reader
 
 	switch filename {
-	case "", "-":
+	case "-":
 		reader = os.Stdin
 	default:
 		file, err := os.Open(filename)
@@ -60,6 +60,10 @@ func run(cmd *cobra.Command, args []string) (bool, error) {
 		}
 
 		return isSucceeded, nil
+	}
+
+	if len(args) == 0 {
+		args = append(args, "-")
 	}
 
 	if opt.check {
@@ -110,13 +114,19 @@ func run(cmd *cobra.Command, args []string) (bool, error) {
 					continue
 				}
 
-				hasher := blake3.New(len(checksum.digest), nil)
+				hasher := blake3.New()
 				if _, err := hasher.Write(verifyInput); err != nil {
 					return isSucceeded, err
 				}
 
-				digest := hasher.Sum(nil)
-				if slices.Equal(checksum.digest, digest) {
+				digest := hasher.Digest()
+
+				out := make([]byte, len(checksum.digest))
+				if _, err := digest.Read(out); err != nil {
+					panic(err)
+				}
+
+				if slices.Equal(checksum.digest, out) {
 					matchedChecksums++
 
 					if !opt.quiet {
@@ -174,7 +184,8 @@ func run(cmd *cobra.Command, args []string) (bool, error) {
 			}
 		}
 	} else {
-		hasher := blake3.New(int(opt.length), nil)
+		hasher := blake3.New()
+		out := make([]byte, opt.length)
 
 		for _, filename := range args {
 			input, err := readFile(filename)
@@ -186,7 +197,13 @@ func run(cmd *cobra.Command, args []string) (bool, error) {
 				return isSucceeded, err
 			}
 
-			digest := hasher.Sum(nil)
+			digest := hasher.Digest()
+
+			clear(out)
+
+			if _, err := digest.Read(out); err != nil {
+				panic(err)
+			}
 
 			var output string
 
@@ -196,9 +213,9 @@ func run(cmd *cobra.Command, args []string) (bool, error) {
 			}
 
 			if opt.tag {
-				output += writeTaggedChecksum(filename, digest)
+				output += writeTaggedChecksum(filename, out)
 			} else {
-				output += writeUntaggedChecksum(filename, digest)
+				output += writeUntaggedChecksum(filename, out)
 			}
 
 			fmt.Println(output)
