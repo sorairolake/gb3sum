@@ -27,7 +27,7 @@ builds:
       - arm64
 
 archives:
-  - format: tar.gz
+  - format: tar.zst
     # use zip for windows archives
     format_overrides:
       - goos: windows
@@ -40,6 +40,9 @@ archives:
       - docs/man/man1/gb3sum.1
       - LICENSES/*
       - README.md
+
+checksum:
+  algorithm: blake2b
 
 changelog:
   sort: asc
