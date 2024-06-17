@@ -8,7 +8,7 @@ go 1.22
 
 require (
 	github.com/google/go-cmdtest v0.4.0
-	github.com/spf13/cobra v1.8.0
+	github.com/spf13/cobra v1.8.1
 	github.com/zeebo/blake3 v0.2.3
 )
 
