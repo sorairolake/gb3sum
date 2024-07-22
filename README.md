@@ -24,12 +24,6 @@ dependencies.
 go install github.com/sorairolake/gb3sum@latest
 ```
 
-### Via a package manager
-
-| OS    | Package manager | Command                               |
-| ----- | --------------- | ------------------------------------- |
-| _Any_ | [Homebrew]      | `brew install sorairolake/tap/gb3sum` |
-
 ### From binaries
 
 The [release page] contains pre-built binaries for Linux, macOS, Windows and
@@ -137,7 +131,6 @@ licensing information.
 [go-version-badge]: https://img.shields.io/github/go-mod/go-version/sorairolake/gb3sum?style=for-the-badge&logo=go
 [BLAKE3]: https://github.com/BLAKE3-team/BLAKE3
 [Go]: https://go.dev/
-[Homebrew]: https://brew.sh/
 [release page]: https://github.com/sorairolake/gb3sum/releases
 [BUILD.adoc]: BUILD.adoc
 [`gb3sum(1)`]: docs/man/man1/gb3sum.1.adoc
