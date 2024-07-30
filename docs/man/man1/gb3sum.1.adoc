@@ -4,7 +4,7 @@
 
 = gb3sum(1)
 // Specify in UTC.
-:docdate: 2024-04-30
+:docdate: 2024-07-30
 :doctype: manpage
 :mansource: gb3sum 0.2.1
 :manmanual: General Commands Manual
