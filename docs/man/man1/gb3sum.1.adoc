@@ -4,10 +4,13 @@
 
 = gb3sum(1)
 // Specify in UTC.
-:docdate: 2024-04-30
+:docdate: 2024-07-30
 :doctype: manpage
-:mansource: gb3sum 0.2.1
+:mansource: gb3sum 0.2.2
 :manmanual: General Commands Manual
+:github-url: https://github.com
+:blake3-repo-url: {github-url}/BLAKE3-team/BLAKE3
+:repo-url: {github-url}/sorairolake/gb3sum
 
 == NAME
 
@@ -19,8 +22,8 @@ gb3sum - print and check BLAKE3 checksums
 
 == DESCRIPTION
 
-*{manname}* is a command-line utility for printing and checking BLAKE3
-checksums.
+*{manname}* is a command-line utility for printing and checking
+{blake3-repo-url}[BLAKE3] checksums.
 
 When no _FILE_, or when _FILE_ is "-", read standard input.
 
@@ -94,7 +97,7 @@ _FILE_::
 
 *--generate-completion* _SHELL_::
 
-  Generate shell completion. The completion is output to stdout.
+  Generate shell completion. The completion is output to standard output.
 
   The possible values are:{blank}:::
 
@@ -128,11 +131,7 @@ _FILE_::
 
 Source repository:{blank}::
 
-  https://github.com/sorairolake/gb3sum
-
-BLAKE3:{blank}::
-
-  https://github.com/BLAKE3-team/BLAKE3
+  {repo-url}
 
 == EXAMPLES
 
@@ -148,7 +147,7 @@ Check BLAKE3 checksums:{blank}::
 
 Report bugs to:{blank}::
 
-  https://github.com/sorairolake/gb3sum/issues
+  {repo-url}/issues
 
 == COPYRIGHT
 

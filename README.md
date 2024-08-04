@@ -24,12 +24,6 @@ dependencies.
 go install github.com/sorairolake/gb3sum@latest
 ```
 
-### Via a package manager
-
-| OS    | Package manager | Command                               |
-| ----- | --------------- | ------------------------------------- |
-| _Any_ | [Homebrew]      | `brew install sorairolake/tap/gb3sum` |
-
 ### From binaries
 
 The [release page] contains pre-built binaries for Linux, macOS, Windows and
@@ -70,7 +64,7 @@ foo.txt: OK
 
 ### Generate shell completion
 
-`--generate-completion` option generates shell completions to stdout.
+`--generate-completion` option generates shell completions to standard output.
 
 The following shells are supported:
 
@@ -126,7 +120,7 @@ Copyright &copy; 2024 Shun Sakai (see [AUTHORS.adoc])
 2. Some files are distributed under the terms of the _Creative Commons
    Attribution 4.0 International Public License_.
 
-This project is compliant with version 3.0 of the [_REUSE Specification_]. See
+This project is compliant with version 3.2 of the [_REUSE Specification_]. See
 copyright notices of individual files for more details on copyright and
 licensing information.
 
@@ -137,7 +131,6 @@ licensing information.
 [go-version-badge]: https://img.shields.io/github/go-mod/go-version/sorairolake/gb3sum?style=for-the-badge&logo=go
 [BLAKE3]: https://github.com/BLAKE3-team/BLAKE3
 [Go]: https://go.dev/
-[Homebrew]: https://brew.sh/
 [release page]: https://github.com/sorairolake/gb3sum/releases
 [BUILD.adoc]: BUILD.adoc
 [`gb3sum(1)`]: docs/man/man1/gb3sum.1.adoc
