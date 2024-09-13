@@ -85,6 +85,16 @@ Please see the following:
 
 - [`gb3sum(1)`]
 
+## Source code
+
+The upstream repository is available at
+<https://github.com/sorairolake/gb3sum.git>.
+
+The source code is also available at:
+
+- <https://gitlab.com/sorairolake/gb3sum.git>
+- <https://codeberg.org/sorairolake/gb3sum.git>
+
 ## Changelog
 
 Please see [CHANGELOG.adoc].
