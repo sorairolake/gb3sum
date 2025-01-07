@@ -5,8 +5,9 @@
 = gb3sum(1)
 // Specify in UTC.
 :docdate: 2024-07-30
+:revnumber: 0.2.2
 :doctype: manpage
-:mansource: gb3sum 0.2.2
+:mansource: gb3sum {revnumber}
 :manmanual: General Commands Manual
 :github-url: https://github.com
 :blake3-repo-url: {github-url}/BLAKE3-team/BLAKE3
