@@ -2,11 +2,11 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-alias all := default
 alias build := build-debug
 
 # Run default recipe
-default: build-debug
+@_default:
+    just -l
 
 # Build `gb3sum` command in debug mode
 @build-debug $CGO_ENABLED="0":
