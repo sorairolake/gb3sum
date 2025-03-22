@@ -150,4 +150,4 @@ licensing information.
 [`b2sum`]: https://www.gnu.org/software/coreutils/b2sum
 [`b3sum`]: https://crates.io/crates/b3sum
 [AUTHORS.adoc]: AUTHORS.adoc
-[_REUSE Specification_]: https://reuse.software/spec/
+[_REUSE Specification_]: https://reuse.software/spec-3.3/
