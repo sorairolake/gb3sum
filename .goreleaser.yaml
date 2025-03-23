@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-version: 1
+version: 2
 
 before:
   hooks:
@@ -27,11 +27,11 @@ builds:
       - arm64
 
 archives:
-  - format: tar.zst
+  - formats: tar.zst
     # use zip for windows archives
     format_overrides:
       - goos: windows
-        format: zip
+        formats: zip
     files:
       - AUTHORS.adoc
       - BUILD.adoc
