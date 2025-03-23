@@ -85,6 +85,16 @@ Please see the following:
 
 - [`gb3sum(1)`]
 
+## Source code
+
+The upstream repository is available at
+<https://github.com/sorairolake/gb3sum.git>.
+
+The source code is also available at:
+
+- <https://gitlab.com/sorairolake/gb3sum.git>
+- <https://codeberg.org/sorairolake/gb3sum.git>
+
 ## Changelog
 
 Please see [CHANGELOG.adoc].
@@ -113,14 +123,14 @@ Use `b3sum` instead of `gb3sum` for those purposes.
 
 ## License
 
-Copyright &copy; 2024 Shun Sakai (see [AUTHORS.adoc])
+Copyright (C) 2024 Shun Sakai (see [AUTHORS.adoc])
 
-1. This program is distributed under the terms of the _GNU General Public
-   License v3.0 or later_.
-2. Some files are distributed under the terms of the _Creative Commons
-   Attribution 4.0 International Public License_.
+1.  This program is distributed under the terms of the _GNU General Public
+    License v3.0 or later_.
+2.  Some files are distributed under the terms of the _Creative Commons
+    Attribution 4.0 International Public License_.
 
-This project is compliant with version 3.2 of the [_REUSE Specification_]. See
+This project is compliant with version 3.3 of the [_REUSE Specification_]. See
 copyright notices of individual files for more details on copyright and
 licensing information.
 
@@ -140,4 +150,4 @@ licensing information.
 [`b2sum`]: https://www.gnu.org/software/coreutils/b2sum
 [`b3sum`]: https://crates.io/crates/b3sum
 [AUTHORS.adoc]: AUTHORS.adoc
-[_REUSE Specification_]: https://reuse.software/spec/
+[_REUSE Specification_]: https://reuse.software/spec-3.3/

@@ -2,11 +2,11 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-alias all := default
 alias build := build-debug
 
 # Run default recipe
-default: build-debug
+@_default:
+    just -l
 
 # Build `gb3sum` command in debug mode
 @build-debug $CGO_ENABLED="0":
@@ -26,7 +26,7 @@ default: build-debug
 
 # Run `golangci-lint run`
 @golangci-lint:
-    golangci-lint run -E gofmt,goimports
+    go tool golangci-lint run -E gofmt,goimports
 
 # Run the formatter
 fmt: gofmt goimports
@@ -37,7 +37,7 @@ fmt: gofmt goimports
 
 # Run `goimports`
 @goimports:
-    fd -e go -x goimports -w
+    fd -e go -x go tool goimports -w
 
 # Run the linter
 lint: vet staticcheck
@@ -48,7 +48,7 @@ lint: vet staticcheck
 
 # Run `staticcheck`
 @staticcheck:
-    staticcheck ./...
+    go tool staticcheck ./...
 
 # Build `gb3sum(1)`
 @build-man:
@@ -64,4 +64,4 @@ lint: vet staticcheck
 
 # Increment the version
 @bump part:
-    bump-my-version bump {{part}}
+    bump-my-version bump {{ part }}
