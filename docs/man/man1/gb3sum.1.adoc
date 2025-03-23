@@ -5,7 +5,7 @@
 = gb3sum(1)
 // Specify in UTC.
 :docdate: 2024-07-30
-:revnumber: 0.2.2
+:revnumber: 0.2.3
 :doctype: manpage
 :mansource: gb3sum {revnumber}
 :manmanual: General Commands Manual

@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 [tool.bumpversion]
-current_version = "0.2.2"
+current_version = "0.2.3"
 
 [[tool.bumpversion.files]]
 filename = "docs/man/man1/gb3sum.1.adoc"
