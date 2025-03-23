@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 $ gb3sum -v
-gb3sum version 0.2.3
+gb3sum version 0.2.4
 
 $ gb3sum --version
-gb3sum version 0.2.3
+gb3sum version 0.2.4
