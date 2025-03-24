@@ -5,63 +5,63 @@
 alias build := build-debug
 
 # Run default recipe
-@_default:
+_default:
     just -l
 
 # Build `gb3sum` command in debug mode
-@build-debug $CGO_ENABLED="0":
+build-debug $CGO_ENABLED="0":
     go build
 
 # Build `gb3sum` command in release mode
-@build-release $CGO_ENABLED="0":
+build-release $CGO_ENABLED="0":
     go build -ldflags="-s -w" -trimpath
 
 # Remove generated artifacts
-@clean:
+clean:
     go clean
 
 # Run tests
-@test:
+test:
     go test ./...
 
 # Run `golangci-lint run`
-@golangci-lint:
+golangci-lint:
     go tool golangci-lint run -E gofmt,goimports
 
 # Run the formatter
 fmt: gofmt goimports
 
 # Run `go fmt`
-@gofmt:
+gofmt:
     go fmt ./...
 
 # Run `goimports`
-@goimports:
+goimports:
     fd -e go -x go tool goimports -w
 
 # Run the linter
 lint: vet staticcheck
 
 # Run `go vet`
-@vet:
+vet:
     go vet ./...
 
 # Run `staticcheck`
-@staticcheck:
+staticcheck:
     go tool staticcheck ./...
 
 # Build `gb3sum(1)`
-@build-man:
+build-man:
     asciidoctor -b manpage docs/man/man1/gb3sum.1.adoc
 
 # Run the linter for GitHub Actions workflow files
-@lint-github-actions:
+lint-github-actions:
     actionlint -verbose
 
 # Run the formatter for the README
-@fmt-readme:
+fmt-readme:
     npx prettier -w README.md
 
 # Increment the version
-@bump part:
+bump part:
     bump-my-version bump {{ part }}
