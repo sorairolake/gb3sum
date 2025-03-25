@@ -29,18 +29,28 @@ var testFiles = []string{
 	"fox.txt",
 }
 
-func copyFile(srcFile, dstFile string) error {
+func copyFile(srcFile, dstFile string) (err error) {
 	src, err := os.Open(srcFile)
 	if err != nil {
 		return err
 	}
-	defer src.Close()
+
+	defer func() {
+		if e := src.Close(); e != nil {
+			err = e
+		}
+	}()
 
 	dst, err := os.Create(dstFile)
 	if err != nil {
 		return err
 	}
-	defer dst.Close()
+
+	defer func() {
+		if e := dst.Close(); e != nil {
+			err = e
+		}
+	}()
 
 	_, err = io.Copy(dst, src)
 	if err != nil {
@@ -66,7 +76,11 @@ func TestCLI(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	defer os.Remove("gb3sum")
+	defer func() {
+		if err := os.Remove("gb3sum"); err != nil {
+			t.Fatal(err)
+		}
+	}()
 
 	ts, err := cmdtest.Read("testdata")
 	if err != nil {

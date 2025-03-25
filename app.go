@@ -18,7 +18,7 @@ import (
 	"github.com/zeebo/blake3"
 )
 
-func readFile(filename string) ([]byte, error) {
+func readFile(filename string) (data []byte, err error) {
 	var reader io.Reader
 
 	switch filename {
@@ -29,7 +29,12 @@ func readFile(filename string) ([]byte, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer file.Close()
+
+		defer func() {
+			if e := file.Close(); e != nil {
+				err = e
+			}
+		}()
 
 		reader = file
 	}
