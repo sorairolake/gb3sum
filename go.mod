@@ -4,9 +4,9 @@
 
 module github.com/sorairolake/gb3sum
 
-go 1.23.0
+go 1.24
 
-toolchain go1.24.0
+toolchain go1.24.1
 
 require (
 	github.com/google/go-cmdtest v0.4.0
@@ -109,7 +109,7 @@ require (
 	github.com/kkHAIKE/contextcheck v1.1.6 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.10 // indirect
 	github.com/kulti/thelper v0.6.3 // indirect
-	github.com/kunwardeep/paralleltest v1.0.10 // indirect
+	github.com/kunwardeep/paralleltest v1.0.12 // indirect
 	github.com/lasiar/canonicalheader v1.1.2 // indirect
 	github.com/ldez/exptostd v0.4.2 // indirect
 	github.com/ldez/gomoddirectives v0.6.1 // indirect
@@ -207,8 +207,4 @@ require (
 	mvdan.cc/unparam v0.0.0-20250301125049-0df0534333a4 // indirect
 )
 
-tool (
-	github.com/golangci/golangci-lint/v2/cmd/golangci-lint
-	golang.org/x/tools/cmd/goimports
-	honnef.co/go/tools/cmd/staticcheck
-)
+tool github.com/golangci/golangci-lint/v2/cmd/golangci-lint

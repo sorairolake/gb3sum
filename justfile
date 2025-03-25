@@ -3,6 +3,8 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 alias build := build-debug
+alias fmt := golangci-lint-fmt
+alias lint := golangci-lint-run
 
 # Run default recipe
 _default:
@@ -24,31 +26,16 @@ clean:
 test:
     go test ./...
 
-# Run `golangci-lint run`
-golangci-lint:
-    go tool golangci-lint run
+# Run `golangci-lint`
+golangci-lint: golangci-lint-fmt golangci-lint-run
 
 # Run the formatter
-fmt: gofmt goimports
-
-# Run `go fmt`
-gofmt:
-    go fmt ./...
-
-# Run `goimports`
-goimports:
-    fd -e go -x go tool goimports -w
+golangci-lint-fmt:
+    go tool golangci-lint fmt
 
 # Run the linter
-lint: vet staticcheck
-
-# Run `go vet`
-vet:
-    go vet ./...
-
-# Run `staticcheck`
-staticcheck:
-    go tool staticcheck ./...
+golangci-lint-run:
+    go tool golangci-lint run
 
 # Build `gb3sum(1)`
 build-man:

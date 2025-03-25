@@ -7,7 +7,7 @@
 == Prerequisites
 
 .To build *gb3sum*, you will need the following dependencies
-* https://go.dev/[Go] (v1.23.0 or later)
+* https://go.dev/[Go] (v1.24 or later)
 
 .To build a man page, you will need the following additional dependencies
 * https://asciidoctor.org/[Asciidoctor]
