@@ -31,11 +31,11 @@ golangci-lint: golangci-lint-fmt golangci-lint-run
 
 # Run the formatter
 golangci-lint-fmt:
-    go tool golangci-lint fmt
+    golangci-lint fmt
 
 # Run the linter
 golangci-lint-run:
-    go tool golangci-lint run
+    golangci-lint run
 
 # Build `gb3sum(1)`
 build-man:
