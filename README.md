@@ -90,11 +90,6 @@ Please see the following:
 The upstream repository is available at
 <https://github.com/sorairolake/gb3sum.git>.
 
-The source code is also available at:
-
-- <https://gitlab.com/sorairolake/gb3sum.git>
-- <https://codeberg.org/sorairolake/gb3sum.git>
-
 ## Changelog
 
 Please see [CHANGELOG.adoc].
