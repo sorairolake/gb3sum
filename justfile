@@ -3,65 +3,52 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 alias build := build-debug
+alias fmt := golangci-lint-fmt
+alias lint := golangci-lint-run
 
 # Run default recipe
-@_default:
+_default:
     just -l
 
 # Build `gb3sum` command in debug mode
-@build-debug $CGO_ENABLED="0":
+build-debug $CGO_ENABLED="0":
     go build
 
 # Build `gb3sum` command in release mode
-@build-release $CGO_ENABLED="0":
+build-release $CGO_ENABLED="0":
     go build -ldflags="-s -w" -trimpath
 
 # Remove generated artifacts
-@clean:
+clean:
     go clean
 
 # Run tests
-@test:
+test:
     go test ./...
 
-# Run `golangci-lint run`
-@golangci-lint:
-    go tool golangci-lint run -E gofmt,goimports
+# Run `golangci-lint`
+golangci-lint: golangci-lint-fmt golangci-lint-run
 
 # Run the formatter
-fmt: gofmt goimports
-
-# Run `go fmt`
-@gofmt:
-    go fmt ./...
-
-# Run `goimports`
-@goimports:
-    fd -e go -x go tool goimports -w
+golangci-lint-fmt:
+    golangci-lint fmt
 
 # Run the linter
-lint: vet staticcheck
-
-# Run `go vet`
-@vet:
-    go vet ./...
-
-# Run `staticcheck`
-@staticcheck:
-    go tool staticcheck ./...
+golangci-lint-run:
+    golangci-lint run
 
 # Build `gb3sum(1)`
-@build-man:
+build-man:
     asciidoctor -b manpage docs/man/man1/gb3sum.1.adoc
 
 # Run the linter for GitHub Actions workflow files
-@lint-github-actions:
+lint-github-actions:
     actionlint -verbose
 
 # Run the formatter for the README
-@fmt-readme:
+fmt-readme:
     npx prettier -w README.md
 
 # Increment the version
-@bump part:
+bump part:
     bump-my-version bump {{ part }}

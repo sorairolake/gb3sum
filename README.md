@@ -1,7 +1,7 @@
 <!--
 SPDX-FileCopyrightText: 2024 Shun Sakai
 
-SPDX-License-Identifier: GPL-3.0-or-later
+SPDX-License-Identifier: CC-BY-4.0
 -->
 
 # gb3sum
@@ -89,11 +89,6 @@ Please see the following:
 
 The upstream repository is available at
 <https://github.com/sorairolake/gb3sum.git>.
-
-The source code is also available at:
-
-- <https://gitlab.com/sorairolake/gb3sum.git>
-- <https://codeberg.org/sorairolake/gb3sum.git>
 
 ## Changelog
 
