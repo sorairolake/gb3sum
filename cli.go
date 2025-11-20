@@ -102,15 +102,23 @@ type options struct {
 var opt options
 
 func init() {
-	rootCmd.Flags().BoolVarP(&opt.check, "check", "c", false, "read checksums from [FILE] and check them")
-	rootCmd.Flags().UintVarP(&opt.length, "length", "l", defaultOutLen, "the number of output bytes")
+	rootCmd.Flags().
+		BoolVarP(&opt.check, "check", "c", false, "read checksums from [FILE] and check them")
+	rootCmd.Flags().
+		UintVarP(&opt.length, "length", "l", defaultOutLen, "the number of output bytes")
 	rootCmd.Flags().BoolVar(&opt.tag, "tag", false, "print BSD-style output")
-	rootCmd.Flags().BoolVar(&opt.ignoreMissing, "ignore-missing", false, "ignore missing files when checking checksums")
-	rootCmd.Flags().BoolVarP(&opt.quiet, "quiet", "q", false, "skip printing OK for each successfully verified file")
-	rootCmd.Flags().BoolVar(&opt.status, "status", false, "indicates the validation result with the exit status without printing anything")
-	rootCmd.Flags().BoolVar(&opt.strict, "strict", false, "exit non-zero if any line in the file is invalid")
-	rootCmd.Flags().BoolVarP(&opt.warn, "warn", "w", false, "warn about improperly formatted checksum lines")
-	rootCmd.Flags().StringVar(&opt.generateCompletion, "generate-completion", "", "generate shell completion")
+	rootCmd.Flags().
+		BoolVar(&opt.ignoreMissing, "ignore-missing", false, "ignore missing files when checking checksums")
+	rootCmd.Flags().
+		BoolVarP(&opt.quiet, "quiet", "q", false, "skip printing OK for each successfully verified file")
+	rootCmd.Flags().
+		BoolVar(&opt.status, "status", false, "indicates the validation result with the exit status without printing anything")
+	rootCmd.Flags().
+		BoolVar(&opt.strict, "strict", false, "exit non-zero if any line in the file is invalid")
+	rootCmd.Flags().
+		BoolVarP(&opt.warn, "warn", "w", false, "warn about improperly formatted checksum lines")
+	rootCmd.Flags().
+		StringVar(&opt.generateCompletion, "generate-completion", "", "generate shell completion")
 
 	rootCmd.MarkFlagsMutuallyExclusive("quiet", "status")
 

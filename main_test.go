@@ -89,7 +89,10 @@ func TestCLI(t *testing.T) {
 
 	ts.Setup = func(rootDir string) error {
 		for _, testFile := range testFiles {
-			err := copyFile(filepath.Join(wd, "testdata", testFile), filepath.Join(rootDir, testFile))
+			err := copyFile(
+				filepath.Join(wd, "testdata", testFile),
+				filepath.Join(rootDir, testFile),
+			)
 			if err != nil {
 				return err
 			}

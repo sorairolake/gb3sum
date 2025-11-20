@@ -14,7 +14,9 @@ func TestWriteUntaggedChecksum(t *testing.T) {
 
 	filename := "foo.txt"
 
-	digest, err := hex.DecodeString("94f1675bac4f8bc3c593c63dbf5fe78a0bfda01082af85d5b41a65096db56bff")
+	digest, err := hex.DecodeString(
+		"94f1675bac4f8bc3c593c63dbf5fe78a0bfda01082af85d5b41a65096db56bff",
+	)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -32,7 +34,9 @@ func TestWriteTaggedChecksum(t *testing.T) {
 
 	filename := "foo.txt"
 
-	digest, err := hex.DecodeString("94f1675bac4f8bc3c593c63dbf5fe78a0bfda01082af85d5b41a65096db56bff")
+	digest, err := hex.DecodeString(
+		"94f1675bac4f8bc3c593c63dbf5fe78a0bfda01082af85d5b41a65096db56bff",
+	)
 	if err != nil {
 		t.Fatal(err)
 	}

@@ -100,7 +100,12 @@ func run(cmd *cobra.Command, args []string) (bool, error) {
 					}
 
 					if opt.warn {
-						fmt.Fprintf(os.Stderr, "gb3sum: %v: %v: improperly formatted BLAKE3 checksum line\n", checksumFile, lineNumber)
+						fmt.Fprintf(
+							os.Stderr,
+							"gb3sum: %v: %v: improperly formatted BLAKE3 checksum line\n",
+							checksumFile,
+							lineNumber,
+						)
 					}
 
 					continue
@@ -156,9 +161,17 @@ func run(cmd *cobra.Command, args []string) (bool, error) {
 				case 0:
 					break
 				case 1:
-					fmt.Fprintf(os.Stderr, "gb3sum: WARNING: %v line is improperly formatted\n", unformattedLines)
+					fmt.Fprintf(
+						os.Stderr,
+						"gb3sum: WARNING: %v line is improperly formatted\n",
+						unformattedLines,
+					)
 				default:
-					fmt.Fprintf(os.Stderr, "gb3sum: WARNING: %v lines are improperly formatted\n", unformattedLines)
+					fmt.Fprintf(
+						os.Stderr,
+						"gb3sum: WARNING: %v lines are improperly formatted\n",
+						unformattedLines,
+					)
 				}
 
 				if !opt.ignoreMissing {
@@ -166,9 +179,17 @@ func run(cmd *cobra.Command, args []string) (bool, error) {
 					case 0:
 						break
 					case 1:
-						fmt.Fprintf(os.Stderr, "gb3sum: WARNING: %v listed file could not be read\n", numReadFailures)
+						fmt.Fprintf(
+							os.Stderr,
+							"gb3sum: WARNING: %v listed file could not be read\n",
+							numReadFailures,
+						)
 					default:
-						fmt.Fprintf(os.Stderr, "gb3sum: WARNING: %v listed files could not be read\n", numReadFailures)
+						fmt.Fprintf(
+							os.Stderr,
+							"gb3sum: WARNING: %v listed files could not be read\n",
+							numReadFailures,
+						)
 					}
 				}
 
@@ -176,9 +197,17 @@ func run(cmd *cobra.Command, args []string) (bool, error) {
 				case 0:
 					break
 				case 1:
-					fmt.Fprintf(os.Stderr, "gb3sum: WARNING: %v computed checksum did NOT match\n", mismatchedChecksums)
+					fmt.Fprintf(
+						os.Stderr,
+						"gb3sum: WARNING: %v computed checksum did NOT match\n",
+						mismatchedChecksums,
+					)
 				default:
-					fmt.Fprintf(os.Stderr, "gb3sum: WARNING: %v computed checksums did NOT match\n", mismatchedChecksums)
+					fmt.Fprintf(
+						os.Stderr,
+						"gb3sum: WARNING: %v computed checksums did NOT match\n",
+						mismatchedChecksums,
+					)
 				}
 
 				if opt.ignoreMissing && (matchedChecksums == 0) {
