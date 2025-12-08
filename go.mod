@@ -10,7 +10,7 @@ toolchain go1.24.2
 
 require (
 	github.com/google/go-cmdtest v0.4.0
-	github.com/spf13/cobra v1.10.1
+	github.com/spf13/cobra v1.10.2
 	github.com/zeebo/blake3 v0.2.4
 )
 
