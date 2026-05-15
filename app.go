@@ -31,7 +31,8 @@ func readFile(filename string) (data []byte, err error) {
 		}
 
 		defer func() {
-			if e := file.Close(); e != nil {
+			e := file.Close()
+			if e != nil {
 				err = e
 			}
 		}()
@@ -60,7 +61,8 @@ func run(cmd *cobra.Command, args []string) (bool, error) {
 	isSucceeded := true
 
 	if opt.generateCompletion != "" {
-		if err := genCompletion(cmd, opt.generateCompletion); err != nil {
+		err := genCompletion(cmd, opt.generateCompletion)
+		if err != nil {
 			return isSucceeded, err
 		}
 
