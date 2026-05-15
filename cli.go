@@ -32,32 +32,38 @@ See gb3sum(1) for more details.`,
 	Version: version,
 	PreRunE: func(cmd *cobra.Command, _ []string) error {
 		if ignoreMissing, _ := cmd.Flags().GetBool("ignore-missing"); ignoreMissing {
-			if err := cmd.MarkFlagRequired("check"); err != nil {
+			err := cmd.MarkFlagRequired("check")
+			if err != nil {
 				panic(err)
 			}
 		}
 
 		if quiet, _ := cmd.Flags().GetBool("quiet"); quiet {
-			if err := cmd.MarkFlagRequired("check"); err != nil {
+			err := cmd.MarkFlagRequired("check")
+			if err != nil {
 				panic(err)
 			}
 		}
 
 		if status, _ := cmd.Flags().GetBool("status"); status {
 			opt.quiet = true
-			if err := cmd.MarkFlagRequired("check"); err != nil {
+
+			err := cmd.MarkFlagRequired("check")
+			if err != nil {
 				panic(err)
 			}
 		}
 
 		if strict, _ := cmd.Flags().GetBool("strict"); strict {
-			if err := cmd.MarkFlagRequired("check"); err != nil {
+			err := cmd.MarkFlagRequired("check")
+			if err != nil {
 				panic(err)
 			}
 		}
 
 		if warn, _ := cmd.Flags().GetBool("warn"); warn {
-			if err := cmd.MarkFlagRequired("check"); err != nil {
+			err := cmd.MarkFlagRequired("check")
+			if err != nil {
 				panic(err)
 			}
 		}

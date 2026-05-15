@@ -36,7 +36,8 @@ func copyFile(srcFile, dstFile string) (err error) {
 	}
 
 	defer func() {
-		if e := src.Close(); e != nil {
+		e := src.Close()
+		if e != nil {
 			err = e
 		}
 	}()
@@ -47,7 +48,8 @@ func copyFile(srcFile, dstFile string) (err error) {
 	}
 
 	defer func() {
-		if e := dst.Close(); e != nil {
+		e := dst.Close()
+		if e != nil {
 			err = e
 		}
 	}()
@@ -77,7 +79,8 @@ func TestCLI(t *testing.T) {
 	}
 
 	defer func() {
-		if err := os.Remove("gb3sum"); err != nil {
+		err := os.Remove("gb3sum")
+		if err != nil {
 			t.Fatal(err)
 		}
 	}()
